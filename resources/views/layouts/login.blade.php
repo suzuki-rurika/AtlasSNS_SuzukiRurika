@@ -10,6 +10,7 @@
   <link rel="stylesheet" href="{{ asset('css/reset.css') }} ">
   <link rel="stylesheet" href="{{ asset('css/app.css') }}">
   <link rel="stylesheet" href="{{ asset('css/style.css') }} ">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <!--スマホ,タブレット対応-->
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -35,26 +36,25 @@
     </div>
     <div id="side-bar">
       <div id="confirm">
-        <p>〇〇さんの</p>
-        <div>
-          <p>フォロー数</p>
-          <p>〇〇名</p>
-        </div>
-        <p class="btn"><a href="">フォローリスト</a></p>
-        <div>
-          <p>フォロワー数</p>
-          <p>〇〇名</p>
-        </div>
-        <p class="btn"><a href="">フォロワーリスト</a></p>
-      </div>
-      <p class="btn"><a href="">ユーザー検索</a></p>
+      <p>{{ Auth::user()->username }}さんの</p>
+          <div>
+            <p>フォロー数</p>
+            <p>{{ Auth::user()->following->count() }}名</p>
+          </div>
+          <p class="btn"><a href="{{ url('follow-list') }}">フォローリスト</a></p>
+          <div>
+            <p>フォロワー数</p>
+            <p>{{ Auth::user()->followers->count() }}名</p>
+          </div>
+          <p class="btn"><a href="{{ url('follower-list') }}">フォロワーリスト</a></p>
+        <p class="btn"><a href="{{ url('search') }}">ユーザー検索</a></p>
     </div>
   </div>
   <footer>
   </footer>
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
   <script src="{{ asset('js/app.js') }}"></script>
-  <script src="JavaScriptファイルのURL"></script>
-  <script src="JavaScriptファイルのURL"></script>
+  <script src="{{ asset('js/script.js') }}"></script>
 </body>
 
 </html>

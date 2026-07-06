@@ -30,17 +30,25 @@ class RegisteredUserController extends Controller
      */
     public function store(Request $request): RedirectResponse
     {
-        User::create([
+        $request->validate([
+            'username' => 'required|string|min:2|max:12',
+            'email' => 'required|string|min:5|max:40|email|unique:users,email',
+            'password' => 'required|alpha_num|min:8|max:20|confirmed',
+        ]);
+
+        $user = User::create([
             'username' => $request->username,
             'email' => $request->email,
             'password' => Hash::make($request->password),
         ]);
+
+        session(['registered_username' => $user->username]);
 
         return redirect('added');
     }
 
     public function added(): View
     {
-        return view('auth.added');
+        return view('auth.added', ['username' => session('registered_username')]);
     }
 }
