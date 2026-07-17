@@ -9,9 +9,9 @@
 
         <title></title>
 
-        <link rel="stylesheet" href="{{ asset('css/reset.css') }} ">
-        <link rel="stylesheet" href="{{ asset('css/app.css') }}">
-        <link rel="stylesheet" href="{{ asset('css/logout.css') }} ">
+        <link rel="stylesheet" href="{{ asset('css/reset.css') }}?v={{ filemtime(public_path('css/reset.css')) }}">
+        <link rel="stylesheet" href="{{ asset('css/app.css') }}?v={{ filemtime(public_path('css/app.css')) }}">
+        <link rel="stylesheet" href="{{ asset('css/logout.css') }}?v={{ filemtime(public_path('css/logout.css')) }}">
         <!--スマホ,タブレット対応-->
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!--サイトのアイコン指定-->

@@ -10,7 +10,7 @@ class PostsController extends Controller
     public function index()
     {
         $userIds = auth()->user()->following->pluck('id')->push(auth()->id());
-        $posts = Post::whereIn('user_id', $userIds)->latest()->get();
+        $posts = Post::with('user')->whereIn('user_id', $userIds)->latest()->get();
 
         return view('posts.index', compact('posts'));
     }
@@ -18,7 +18,7 @@ class PostsController extends Controller
     public function followList()
     {
         $users = auth()->user()->following;
-        $posts = Post::whereIn('user_id', $users->pluck('id'))->latest()->get();
+        $posts = Post::with('user')->whereIn('user_id', $users->pluck('id'))->latest()->get();
 
         return view('posts.follow-list', compact('users', 'posts'));
     }
@@ -26,7 +26,7 @@ class PostsController extends Controller
     public function followerList()
     {
         $users = auth()->user()->followers;
-        $posts = Post::whereIn('user_id', $users->pluck('id'))->latest()->get();
+        $posts = Post::with('user')->whereIn('user_id', $users->pluck('id'))->latest()->get();
 
         return view('posts.follower-list', compact('users', 'posts'));
     }
@@ -34,7 +34,7 @@ class PostsController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'post' => 'required|string|max:150',
+            'post' => 'required|string|min:1|max:150',
         ]);
 
         Post::create([
@@ -54,7 +54,7 @@ class PostsController extends Controller
         }
 
         $request->validate([
-            'post' => 'required|string|max:150',
+            'post' => 'required|string|min:1|max:150',
         ]);
 
         $post->update(['post' => $request->post]);

@@ -27,12 +27,26 @@ class UsersController extends Controller
     {
         auth()->user()->following()->attach($user->id);
 
-        return back();
+        return $this->redirectAfterFollowChange();
     }
 
     public function unfollow(User $user)
     {
         auth()->user()->following()->detach($user->id);
+
+        return $this->redirectAfterFollowChange();
+    }
+
+    /**
+     * ユーザー検索ページ(キーワード付き結果画面を含む)からの操作であれば
+     * キーワード無しの検索前の画面に戻し、それ以外の画面(相手のプロフィール等)
+     * からの操作であればそのまま元の画面に戻す。
+     */
+    private function redirectAfterFollowChange()
+    {
+        if (str_contains(url()->previous(), '/search')) {
+            return redirect('search');
+        }
 
         return back();
     }

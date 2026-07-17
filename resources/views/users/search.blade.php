@@ -6,7 +6,7 @@
     {!! Form::close() !!}
 
     @if (!empty($keyword))
-        <p>「{{ $keyword }}」の検索結果</p>
+        <p>検索ワード：{{ $keyword }}</p>
     @endif
 
     @foreach ($users as $user)
@@ -18,7 +18,7 @@
 
             @if (in_array($user->id, $followingIds))
                 {!! Form::open(['url' => 'follow/' . $user->id, 'method' => 'DELETE']) !!}
-                    <button type="submit" class="btn btn-outline-secondary btn-sm">フォロー解除</button>
+                    <button type="submit" class="btn btn-danger btn-sm">フォロー解除</button>
                 {!! Form::close() !!}
             @else
                 {!! Form::open(['url' => 'follow/' . $user->id, 'method' => 'POST']) !!}

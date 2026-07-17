@@ -118,21 +118,35 @@ header {
     margin: 4px 0;
 }
 
-.btn {
+/* 独自のピル型リンクボタン(Bootstrapの.btnと名前が衝突しないよう別名にしています) */
+.pill-btn {
     margin: 10px 0;
+    text-align: right;
 }
 
-.btn a {
+.pill-btn a {
     display: inline-block;
+    width: 150px;
+    white-space: nowrap;
     background: #186AC9;
     color: #fff;
-    padding: 8px 16px;
+    padding: 8px 12px;
     border-radius: 20px;
     font-size: 13px;
+    text-align: center;
 }
 
-.btn a:hover {
+.pill-btn a:hover {
     background: #124f9b;
+}
+
+/* ユーザー検索ボタンのみ中央寄せ+見本に合わせて幅広にする */
+.pill-btn-center a {
+    width: 190px;
+}
+
+.pill-btn-center {
+    text-align: center;
 }
 
 /* forms */
@@ -173,35 +187,78 @@ button:hover {
 /* posts */
 .post {
     display: flex;
+    align-items: flex-start;
     gap: 12px;
     padding: 16px 0;
     border-bottom: 1px solid #eee;
     position: relative;
 }
 
-
-.post p {
-    margin: 2px 0;
+.post-avatar-link {
+    flex-shrink: 0;
 }
 
-.post .user-row-link {
-    flex: 0 0 100%;
-    margin-bottom: 4px;
+.post-body {
+    flex: 1;
+    min-width: 0;
+}
+
+.post-header {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 8px;
+}
+
+.post-username {
+    font-weight: bold;
+}
+
+.post-date {
+    color: #888;
+    font-size: 12px;
+    white-space: nowrap;
+}
+
+.post-content {
+    margin: 4px 0;
+    word-break: break-all;
+    overflow-wrap: anywhere;
+    white-space: pre-wrap;
+}
+
+.post-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 4px;
+    margin-top: 4px;
+}
+
+/* 投稿フォーム(アイコン + テキストエリア) */
+.composer {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+}
+
+.composer-body {
+    flex: 1;
+    min-width: 0;
 }
 
 /* user search / icon list */
 #icon-list {
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
     gap: 16px;
-    flex-wrap: wrap;
     padding-bottom: 16px;
     border-bottom: 1px solid #eee;
     margin-bottom: 16px;
 }
 
 #icon-list a {
-    text-align: center;
-    font-size: 12px;
+    display: flex;
+    justify-content: center;
 }
 
 
@@ -255,6 +312,15 @@ button:hover {
     margin-left: 8px;
 }
 
+/* 汎用のbutton:hover(background一括指定)がアイコンボタンの
+   background-color/size/position/repeatを初期値へ巻き戻してしまうのを防ぐ */
+.btn-icon:hover {
+    background-color: transparent;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
 .btn-edit {
     background-image: url('/images/edit.png');
 }
@@ -268,17 +334,7 @@ button:hover {
 }
 
 .btn-trash:hover {
-    background-image: url('/images/trash_h.png');
-}
-
-.post {
-    align-items: center;
-}
-
-.post-actions {
-    margin-left: auto;
-    display: flex;
-    align-items: center;
+    background-image: url('/images/trash-h.png');
 }
 
 .header-avatar {

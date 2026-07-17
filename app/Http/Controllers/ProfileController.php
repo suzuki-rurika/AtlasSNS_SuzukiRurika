@@ -25,9 +25,7 @@ class ProfileController extends Controller
         $user->email = $request->email;
         $user->bio = $request->bio;
 
-        if ($request->filled('password')) {
-            $user->password = Hash::make($request->password);
-        }
+        $user->password = Hash::make($request->password);
 
         if ($request->hasFile('icon_image')) {
             $file = $request->file('icon_image');
@@ -38,6 +36,6 @@ class ProfileController extends Controller
 
         $user->save();
 
-        return redirect('profile');
+        return redirect('top');
     }
 }

@@ -85,6 +85,31 @@ header p {
     font-size: 13px;
 }
 
+#container p.pill-btn {
+    text-align: center;
+}
+
+#container p.pill-btn a {
+    display: inline-block;
+    background: #e05a5a;
+    color: #fff;
+    padding: 8px 20px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: bold;
+    margin-top: 14px;
+}
+
+#container p.pill-btn a:hover {
+    background: #c94848;
+}
+
+/* 登録完了ページ(auth/added.blade.php)のテキストを中央寄せにする */
+#clear {
+    color: #fff;
+    text-align: center;
+}
+
 #container ul {
     color: #fff;
     background: rgba(255, 0, 0, 0.25);

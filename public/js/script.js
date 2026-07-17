@@ -21,4 +21,10 @@ $(function () {
     $('.js-modal').fadeOut();
     return false;
   });
+
+  // 削除フォーム(class="js-delete-form")が送信されたら発火
+  $('.js-delete-form').on('submit', function () {
+    // 確認ダイアログでOKが押された場合のみ削除を実行する
+    return confirm('この投稿を削除します。よろしいでしょうか？');
+  });
 });

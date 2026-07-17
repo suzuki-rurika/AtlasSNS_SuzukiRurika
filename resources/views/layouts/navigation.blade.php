@@ -6,8 +6,8 @@
             <img class="header-avatar" src="{{ asset('images/' . Auth::user()->icon_image) }}" alt="">
         </div>
         <ul id="account-menu-list" style="display: none;">
-            <li><a href="{{ url('top') }}">ホーム</a></li>
-            <li><a href="{{ url('profile') }}">プロフィール</a></li>
+            <li><a href="{{ url('top') }}">HOME</a></li>
+            <li><a href="{{ url('profile') }}">プロフィール編集</a></li>
             <li>
                 <form method="POST" action="{{ route('logout') }}">
                     @csrf

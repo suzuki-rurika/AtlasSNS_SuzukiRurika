@@ -18,8 +18,9 @@ class ProfileUpdateRequest extends FormRequest
         return [
             'username' => ['required', 'string', 'min:2', 'max:12'],
             'email' => ['required', 'string', 'min:5', 'max:40', 'email', Rule::unique(User::class)->ignore($this->user()->id)],
-            'password' => ['nullable', 'alpha_num', 'min:8', 'max:20', 'confirmed'],
+            'password' => ['required', 'alpha_num', 'min:8', 'max:20', 'confirmed'],
             'bio' => ['nullable', 'max:150'],
+            'icon_image' => ['nullable', 'mimes:jpg,jpeg,png,bmp,gif,svg'],
         ];
     }
 }

@@ -3,11 +3,11 @@
   <!-- 適切なURLを入力してください -->
   {!! Form::open(['url' => 'login']) !!}
 
-  <p>AtlasSNSへようこそ</p>
+  <h2>AtlasSNSへようこそ</h2>
 
-  {{ Form::label('email') }}
+  {{ Form::label('email', 'メールアドレス') }}
   {{ Form::text('email',null,['class' => 'input']) }}
-  {{ Form::label('password') }}
+  {{ Form::label('password', 'パスワード') }}
   {{ Form::password('password',['class' => 'input']) }}
 
   {{ Form::submit('ログイン') }}
