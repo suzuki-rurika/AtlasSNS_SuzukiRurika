@@ -6,7 +6,7 @@
     {!! Form::close() !!}
 
     @if (!empty($keyword))
-        <p>検索ワード：{{ $keyword }}</p>
+        <p class="search-keyword">検索ワード：{{ $keyword }}</p>
     @endif
 
     @foreach ($users as $user)

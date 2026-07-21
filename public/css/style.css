@@ -49,28 +49,29 @@ header {
     font-size: 15px;
 }
 
-#arrow-icon {
-    display: inline-block;
-    transition: transform 0.2s ease;
-    font-size: 10px;
-}
-
 #account-menu-list {
     position: absolute;
     right: 0;
     top: 100%;
     margin-top: 8px;
     background: #fff;
+    border: 1px solid #e0e0e0;
     border-radius: 6px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
     list-style: none;
-    padding: 8px 0;
+    padding: 0;
     min-width: 160px;
     z-index: 10;
+    overflow: hidden;
 }
 
 #account-menu-list li {
     padding: 0;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+#account-menu-list li:last-child {
+    border-bottom: none;
 }
 
 #account-menu-list li a,
@@ -81,6 +82,7 @@ header {
     text-align: left;
     background: none;
     border: none;
+    border-radius: 0;
     font-size: 14px;
     color: #333;
     cursor: pointer;
@@ -88,7 +90,14 @@ header {
 
 #account-menu-list li a:hover,
 #account-menu-list li button:hover {
-    background: #f2f4f7;
+    background: #186AC9;
+    color: #fff;
+}
+
+#arrow-icon {
+    display: inline-block;
+    transition: transform 0.2s ease;
+    font-size: 10px;
 }
 
 /* main content layout */
@@ -246,6 +255,14 @@ button:hover {
     min-width: 0;
 }
 
+.search-keyword {
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 8px 12px;
+    margin-bottom: 12px;
+}
+
 /* user search / icon list */
 #icon-list {
     display: grid;
@@ -381,7 +398,7 @@ button:hover {
 .btn-post {
     width: 40px;
     height: 40px;
-    border-radius: 50%;
+    border-radius: 8px;
     background-color: #186AC9;
     background-image: url('/images/post.png');
     background-size: 20px;
