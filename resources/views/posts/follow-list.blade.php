@@ -10,8 +10,6 @@
         @endforeach
     </div>
 
-    <hr>
-
     @foreach ($posts as $post)
         @include('posts._post-item', ['post' => $post])
     @endforeach

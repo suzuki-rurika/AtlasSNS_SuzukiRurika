@@ -71,7 +71,7 @@ header p {
     background: #e05a5a;
     color: #fff;
     border: none;
-    border-radius: 20px;
+    border-radius: 8px;
     padding: 10px 30px;
     font-weight: bold;
     cursor: pointer;
@@ -94,7 +94,7 @@ header p {
     background: #e05a5a;
     color: #fff;
     padding: 8px 20px;
-    border-radius: 20px;
+    border-radius: 8px;
     font-size: 13px;
     font-weight: bold;
     margin-top: 14px;

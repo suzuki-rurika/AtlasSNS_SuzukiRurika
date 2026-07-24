@@ -1,8 +1,8 @@
 <x-login-layout>
 
     {!! Form::open(['url' => 'search', 'method' => 'GET']) !!}
-        {{ Form::text('keyword', $keyword ?? null, ['placeholder' => 'ユーザー名で検索']) }}
-        {{ Form::submit('検索') }}
+        {{ Form::text('keyword', $keyword ?? null, ['placeholder' => 'ユーザー名']) }}
+        <button type="submit" class="btn-search"></button>
     {!! Form::close() !!}
 
     @if (!empty($keyword))

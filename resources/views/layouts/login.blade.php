@@ -9,8 +9,10 @@
   <title></title>
   <link rel="stylesheet" href="{{ asset('css/reset.css') }}?v={{ filemtime(public_path('css/reset.css')) }}">
   <link rel="stylesheet" href="{{ asset('css/app.css') }}?v={{ filemtime(public_path('css/app.css')) }}">
-  <link rel="stylesheet" href="{{ asset('css/style.css') }}?v={{ filemtime(public_path('css/style.css')) }}">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- 独自style.cssはBootstrapの後に読み込み、同じセレクタ(a, buttonなど)で
+       競合した場合に独自デザインを優先させる -->
+  <link rel="stylesheet" href="{{ asset('css/style.css') }}?v={{ filemtime(public_path('css/style.css')) }}">
   <!--スマホ,タブレット対応-->
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -37,14 +39,14 @@
     <div id="side-bar">
       <div id="confirm">
       <p>{{ Auth::user()->username }}さんの</p>
-          <div>
-            <p>フォロー数</p>
-            <p>{{ Auth::user()->following->count() }}名</p>
+          <div class="stat-row">
+            <span>フォロー数</span>
+            <span>{{ Auth::user()->following->count() }}名</span>
           </div>
           <p class="pill-btn"><a href="{{ url('follow-list') }}">フォローリスト</a></p>
-          <div>
-            <p>フォロワー数</p>
-            <p>{{ Auth::user()->followers->count() }}名</p>
+          <div class="stat-row">
+            <span>フォロワー数</span>
+            <span>{{ Auth::user()->followers->count() }}名</span>
           </div>
           <p class="pill-btn"><a href="{{ url('follower-list') }}">フォロワーリスト</a></p>
         <p class="pill-btn pill-btn-center"><a href="{{ url('search') }}">ユーザー検索</a></p>
